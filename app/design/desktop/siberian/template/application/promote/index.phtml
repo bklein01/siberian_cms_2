@@ -1,0 +1,47 @@
+<?php $application = $this->getApplication(); ?>
+<div class="application_promote application">
+    <div class="application_header app_name">
+        <?php echo $this->getPartialHtml('customization_header'); ?>
+    </div>
+    <div class="application_content inner_content">
+        <div class="title">
+            <i class="left icon-bullhorn"></i>
+            <h2 class="left f-rounded"><?php echo $this->_('Promote'); ?></h2>
+            <div class="clear"></div>
+            <hr />
+        </div>
+        <div class="area">
+            <h3 class="title">
+                <span class="left area"><?php echo $this->_('My QRCode'); ?></span>
+                <div class="clear"></div>
+            </h3>
+            <p><?php echo $this->_('You can download your QRCode by <a class="f-bold" href="%s">clicking here</a>', $this->getUrl('application/promote/qrcode')); ?></p>
+            <?php echo $application->getQrcode(); ?>
+        </div>
+        <?php if($application->getBannerAuthor() AND $application->getBannerButtonLabel()): ?>
+        <div class="area">
+            <h3 class="title">
+                <span class="left area"><?php echo $this->_('Banner'); ?></span>
+                <div class="clear"></div>
+            </h3>
+            <p><strong><?php echo $this->_("In order to insert a promote banner for your application on your site, please follow those steps:"); ?></strong></p>
+            <p>
+                <?php echo $this->_("1. Insert the following code between the %s tag of your page:", htmlentities("<head>")); ?>
+            </p>
+            <p>
+                <pre>
+<?php echo $this->getMetaHtml(); ?>
+                </pre>
+            </p>
+            <p>
+                <?php echo $this->_("2. Insert the following code at the end of the %s tag of your page:", htmlentities("<body>")); ?>
+            </p>
+            <p>
+                <pre>
+<?php echo $this->getJsCodeHtml(); ?>
+                </pre>
+            </p>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
